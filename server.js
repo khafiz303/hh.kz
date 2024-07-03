@@ -1,6 +1,7 @@
 const express = require('express')
 const logger = require('morgan')
 const passport = require('passport')
+const cors = require('cors')
 
 const app = express()
 
@@ -8,7 +9,7 @@ app.use(passport.initialize());
 app.use(logger('dev'))
 app.use(express.urlencoded())
 app.use(express.json())
-
+app.use(cors())
 require('./app/auth/passport')
 
 app.use(require('./app/auth/routes'))
