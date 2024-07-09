@@ -25,7 +25,11 @@ const sendVerificationaEmail= (req , res) =>{
 
 const verifyCode = async (req , res) =>{
     
-    const authCode = await AuthCode.findOne({where: {email : req.body.email}})
+    const authCode = await AuthCode.findOne({
+        where: { email: req.body.email },
+        order: [['id', 'DESC']] 
+      });
+      
 
     console.log(authCode);
     if(!authCode){
