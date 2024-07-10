@@ -64,8 +64,8 @@ const createResume = async(req , res) =>{
     if (req.body.employmentTypes && req.body.employmentTypes.length > 0) {
         req.body.employmentTypes.forEach(async employmentTypeId => {
             await ResumeEmploymentType.create({
-                resumeId : resume.id, 
-                employmentTypeId : employmentTypeId
+                ResumeId : resume.id, 
+                EmploymentTypeId : employmentTypeId
             });
         });
         res.status(200).send(resume)
