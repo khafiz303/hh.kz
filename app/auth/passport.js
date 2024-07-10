@@ -14,6 +14,7 @@ const jwtOptions ={
 
 passport.use(new JWTStrategy(jwtOptions, async(jwtPayload , done)=>{
     const user = await User.findByPk(jwtPayload.id)
+    console.log(jwtPayload);
 
 
     if(user) done(null , user) 

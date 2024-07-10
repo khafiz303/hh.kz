@@ -7,9 +7,11 @@ const User = require('./User')
 
 const isEmployee = async(req , res, next)=>{
     if(req.user){
-        console.log(isEmployee);
+       
         const role = await Role.findByPk(req.user.roleId)
+       
         if(role.name =='employee') next()
+        
         else  res.status(403).send({message : 'Access deinied'})
     }
     else  res.status(403).send({message : 'Unauthorized'})

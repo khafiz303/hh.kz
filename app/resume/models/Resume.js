@@ -60,7 +60,7 @@ const Resume = sequelize.define('Resume', {
 }, {
   timestamps: true, // Используем правильное имя опции для отключения автоматических timestamp'ов
 });
-Resume.belongsTo(City, { foreignKey: 'cityId', as :'city'}); 
+Resume.belongsTo(City, { foreignKey: 'CityId', as :'city'}); 
 Resume.belongsTo(User, { foreignKey: 'UserId' }); 
 Resume.belongsTo(Country,{foreignKey: 'citizenship', as : 'citizhenshipObj'})
 // Resume.hasMany(City, { foreignKey: 'CityId' }); 
