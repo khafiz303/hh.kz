@@ -15,7 +15,7 @@ const ResumeEmploymentType = sequelize.define('ResumeEmploymentType', {
   });
 
   Resume.belongsToMany(EmploymentType, {through:ResumeEmploymentType ,  foreignKey: 'ResumeId', // Название колонки для ResumeId
-      otherKey: 'employmentTypeId' , as : 'employmentTypes' // Название колонки для EmploymentTypeId
+      otherKey: 'EmploymentTypeId' , as : 'employmentTypes' // Название колонки для EmploymentTypeId
     }
   );
   
