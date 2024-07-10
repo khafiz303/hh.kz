@@ -14,7 +14,7 @@ const ResumeEmploymentType = sequelize.define('ResumeEmploymentType', {
     timestamps: false, // Используем правильное имя опции для отключения автоматических timestamp'ов
   });
 
-  Resume.belongsToMany(EmploymentType, {through:ResumeEmploymentType ,  foreignKey: 'resumeId', // Название колонки для ResumeId
+  Resume.belongsToMany(EmploymentType, {through:ResumeEmploymentType ,  foreignKey: 'ResumeId', // Название колонки для ResumeId
       otherKey: 'employmentTypeId' , as : 'employmentTypes' // Название колонки для EmploymentTypeId
     }
   );
