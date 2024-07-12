@@ -25,6 +25,6 @@ const ResumeEmploymentType = sequelize.define('ResumeEmploymentType', {
       otherKey: 'ResumeId' // Название колонки для ResumeId
     
   });
-  
+    
 
 module.exports =ResumeEmploymentType

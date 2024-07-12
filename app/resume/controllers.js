@@ -22,14 +22,15 @@ const createResume = async(req , res) =>{
         main_language : req.body.main_language,
         gender: req.body.gender,
         skills : req.body.skills,
-        CityId : req.body.cityId,
-        citizhenship: req.body.citizhenship,
+        CityId : req.body.CityId,
+        citizenship: req.body.citizhenship,
         UserId : req.user.id
 
         
     })
-    if (req.body.workingHistories && req.body.workingHistories.length > 0) {
-        req.body.workingHistories.forEach(async history => {
+    console.log('dadadadadadadadada',req.body.working_histories);
+    if (req.body.working_histories && req.body.working_histories.length > 0) {
+        req.body.working_histories.forEach(async history => {
             await WorkingHistory.create({
                 resumeId : resume.id, 
                 company_name: history.company_name,
@@ -37,7 +38,7 @@ const createResume = async(req , res) =>{
                 start_date: history.start_date,
                 end_date: history.end_date,
                 responsibilities: history.responsibilities // Убедитесь, что это поле заполнено в вашем запросе
-            });
+            }); 
         });
     }   
     if (req.body.education && req.body.education.length > 0) {
@@ -81,7 +82,7 @@ const getResume =async (req , res)=>{
     const resume = await Resume.findByPk(req.params.id,{
         include:[
             {
-                model:WorkingHistory,
+                model:WorkingHistory, 
                 as : 'workingHistory'
             },
             {
@@ -134,7 +135,7 @@ const editResume = async (req , res)=>{
         main_language : req.body.main_language,
         gender: req.body.gender,
         skills : req.body.skills,
-        CityId : req.body.cityId,
+        CityId : req.body.CityId,
         citizhenship: req.body.citizhenship,
         UserId : req.user.id
     },
@@ -154,9 +155,10 @@ const editResume = async (req , res)=>{
             resumeId :  req.body.id
         }
     })
+    console.log('wkjdsa.cnejkdnc.,˜',req.body.id);
     await ResumeEmploymentType.destroy({
         where:{
-            resumeId :  req.body.id
+            ResumeId :  req.body.id
         }
     })
     await ForeignLanguage.destroy({
@@ -204,8 +206,8 @@ const editResume = async (req , res)=>{
     if (req.body.employmentTypes && req.body.employmentTypes.length > 0) {
         req.body.employmentTypes.forEach(async employmentTypeId => {
             await ResumeEmploymentType.create({
-                resumeId : resume.id, 
-                employmentTypeId : employmentTypeId
+                ResumeId : resume.id, 
+                ExmploymentTypeId : employmentTypeId
             });
         });
     } 

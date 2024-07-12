@@ -31,7 +31,6 @@ const verifyCode = async (req , res) =>{
       });
       
 
-    console.log(authCode);
     if(!authCode){
         res.status(401).send({error : 'code is invalid1'})
     }else if(new Date(authCode.valid_till).getTime() < Date.now()){
@@ -41,9 +40,11 @@ const verifyCode = async (req , res) =>{
         res.status(401).send({error : 'code is invalid3'})
     }else{
         
-
+        console.log('sdfcs');
         let user = await User.findOne({where:{email : req.body.email}})
+        console.log('user' ,user);
         const role = await Role.findOne({where:{name : 'employee' }})
+        console.log(role);
         if(!user){
             
             user = await User .create({

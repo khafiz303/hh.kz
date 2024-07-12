@@ -25,8 +25,8 @@ const validateResume = (req , res, next) =>{
 
 }
 const isAuthorOfResume =async (req , res, next)=>{
+    console.log(req.body);
     const id = req.params.id || req.body.id
-
     const resume = await Resume.findByPk(id)
     if(!resume) res.status(400).send({message : 'Resume with that is not exist'})
     else if(resume.UserId === req.user.id) next()
@@ -36,4 +36,4 @@ const isAuthorOfResume =async (req , res, next)=>{
 module.exports = {
     validateResume,
     isAuthorOfResume
-}
+}   
